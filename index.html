@@ -117,33 +117,40 @@
         }
     </style>
 </head>
-<body class="transition-colors duration-300 ease-in-out">
-    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-6xl">
-        <header class="mb-8 text-center relative">
+<body class="transition-colors duration-300 ease-in-out flex">
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out bg-white dark:bg-slate-800 shadow-xl w-64 p-4 flex flex-col z-50 md:relative md:flex-shrink-0">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-sky-700 dark:text-sky-400">Roadmap Nav</h2>
+            <button id="closeSidebar" class="md:hidden text-slate-600 dark:text-slate-400 text-2xl p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200">✖️</button>
+        </div>
+        <nav class="flex-grow">
+            <ul class="space-y-2">
+                <li><button onclick="showTab('overview'); toggleSidebar();" class="tab-button active w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">📝 Overview</button></li>
+                <li><button onclick="showTab('phase1'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">🚀 Phase 1</button></li>
+                <li><button onclick="showTab('phase2'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">💡 Phase 2</button></li>
+                <li><button onclick="showTab('phase3'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">🛠️ Phase 3</button></li>
+                <li><button onclick="showTab('phase4'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">🔗 Phase 4</button></li>
+                <li><button onclick="showTab('phase5'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">🎯 Phase 5</button></li>
+                <li><button onclick="showTab('timeline'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">⏳ Timeline</button></li>
+                <li><button onclick="showTab('timer'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">⏱️ Focus Timer</button></li>
+                <li><button onclick="showTab('tips'); toggleSidebar();" class="tab-button w-full text-left text-sm sm:text-base px-3 py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 dark:hover:bg-slate-700 rounded-md">🌟 Tips</button></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="flex-1 min-h-screen flex flex-col">
+        <header class="mb-8 text-center relative p-4 md:p-8">
+            <button id="openSidebar" class="md:hidden absolute top-4 left-4 text-slate-600 dark:text-slate-400 text-3xl p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200">☰</button>
             <h1 class="text-3xl sm:text-4xl font-bold text-sky-700">Roadmap to Learn AI Agents for CRM/ATS</h1>
             <p class="text-slate-600 mt-2">An interactive guide to building and integrating AI agents.</p>
-            <div class="absolute top-0 right-0 p-2">
+            <div class="absolute top-4 right-4">
                 <button id="themeToggle" class="text-slate-600 dark:text-slate-400 text-2xl p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200">
                     ☀️
                 </button>
             </div>
         </header>
 
-        <nav class="mb-8 bg-white shadow-md rounded-lg p-2">
-            <ul class="flex flex-wrap justify-center gap-2 sm:gap-3">
-                <li><button onclick="showTab('overview')" class="tab-button active text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-sky-600 hover:bg-sky-50 rounded-md">📝 Overview</button></li>
-                <li><button onclick="showTab('phase1')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">🚀 Phase 1</button></li>
-                <li><button onclick="showTab('phase2')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">💡 Phase 2</button></li>
-                <li><button onclick="showTab('phase3')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">🛠️ Phase 3</button></li>
-                <li><button onclick="showTab('phase4')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">🔗 Phase 4</button></li>
-                <li><button onclick="showTab('phase5')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">🎯 Phase 5</button></li>
-                <li><button onclick="showTab('timeline')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">⏳ Timeline</button></li>
-                <li><button onclick="showTab('timer')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">⏱️ Focus Timer</button></li>
-                <li><button onclick="showTab('tips')" class="tab-button text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2.5 font-medium text-sky-600 border-transparent hover:border-sky-600 hover:bg-sky-50 rounded-md">🌟 Tips</button></li>
-            </ul>
-        </nav>
-
-        <main id="tab-content" class="bg-white shadow-xl rounded-lg p-6 sm:p-8 min-h-[400px]">
+        <main id="tab-content" class="flex-1 bg-white shadow-xl rounded-lg p-6 sm:p-8 mx-4 sm:mx-6 md:mx-8 mb-8">
             <section id="overview" class="content-section active">
                 <h2 class="text-2xl font-semibold text-sky-700 mb-4">Overview</h2>
                 <p class="mb-4 text-slate-600 leading-relaxed">
@@ -211,15 +218,15 @@
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-200">
                     <button onclick="toggleAIExplanationSection('phase1')" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">✨ Get AI Explanation</button>
-                    <div id="aiExplanationSection-phase1" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner">
+                    <div id="aiExplanationSection-phase1" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner dark:bg-slate-700">
                         <h4 class="text-lg font-semibold text-sky-700 mb-3">AI Concept Explainer for Phase 1</h4>
-                        <textarea id="aiConceptInput-phase1" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain Reinforcement Learning' or 'What is TF-IDF?'"></textarea>
+                        <textarea id="aiConceptInput-phase1" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain Reinforcement Learning' or 'What is TF-IDF?'"></textarea>
                         <div class="flex justify-between items-center">
                             <button onclick="generateExplanation('phase1')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">Generate Explanation</button>
                             <span id="aiLoading-phase1" class="text-slate-500 hidden">Generating...</span>
                             <button onclick="toggleAIExplanationSection('phase1')" class="text-slate-500 hover:text-slate-700 font-medium">Close</button>
                         </div>
-                        <div id="aiExplanationOutput-phase1" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600"></div>
+                        <div id="aiExplanationOutput-phase1" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600"></div>
                     </div>
                 </div>
             </section>
@@ -265,15 +272,15 @@
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-200">
                     <button onclick="toggleAIExplanationSection('phase2')" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">✨ Get AI Explanation</button>
-                    <div id="aiExplanationSection-phase2" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner">
+                    <div id="aiExplanationSection-phase2" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner dark:bg-slate-700">
                         <h4 class="text-lg font-semibold text-sky-700 mb-3">AI Concept Explainer for Phase 2</h4>
-                        <textarea id="aiConceptInput-phase2" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain RAG' or 'What is prompt engineering?'"></textarea>
+                        <textarea id="aiConceptInput-phase2" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain RAG' or 'What is prompt engineering?'"></textarea>
                         <div class="flex justify-between items-center">
                             <button onclick="generateExplanation('phase2')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">Generate Explanation</button>
                             <span id="aiLoading-phase2" class="text-slate-500 hidden">Generating...</span>
                             <button onclick="toggleAIExplanationSection('phase2')" class="text-slate-500 hover:text-slate-700 font-medium">Close</button>
                         </div>
-                        <div id="aiExplanationOutput-phase2" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600"></div>
+                        <div id="aiExplanationOutput-phase2" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600"></div>
                     </div>
                 </div>
             </section>
@@ -328,15 +335,15 @@
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-200">
                     <button onclick="toggleAIExplanationSection('phase3')" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">✨ Get AI Explanation</button>
-                    <div id="aiExplanationSection-phase3" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner">
+                    <div id="aiExplanationSection-phase3" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner dark:bg-slate-700">
                         <h4 class="text-lg font-semibold text-sky-700 mb-3">AI Concept Explainer for Phase 3</h4>
-                        <textarea id="aiConceptInput-phase3" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain LangChain Agents' or 'What is CrewAI?'"></textarea>
+                        <textarea id="aiConceptInput-phase3" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain LangChain Agents' or 'What is CrewAI?'"></textarea>
                         <div class="flex justify-between items-center">
                             <button onclick="generateExplanation('phase3')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">Generate Explanation</button>
                             <span id="aiLoading-phase3" class="text-slate-500 hidden">Generating...</span>
                             <button onclick="toggleAIExplanationSection('phase3')" class="text-slate-500 hover:text-slate-700 font-medium">Close</button>
                         </div>
-                        <div id="aiExplanationOutput-phase3" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600"></div>
+                        <div id="aiExplanationOutput-phase3" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600"></div>
                     </div>
                 </div>
             </section>
@@ -387,15 +394,15 @@
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-200">
                     <button onclick="toggleAIExplanationSection('phase4')" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">✨ Get AI Explanation</button>
-                    <div id="aiExplanationSection-phase4" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner">
+                    <div id="aiExplanationSection-phase4" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner dark:bg-slate-700">
                         <h4 class="text-lg font-semibold text-sky-700 mb-3">AI Concept Explainer for Phase 4</h4>
-                        <textarea id="aiConceptInput-phase4" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain Django REST Framework integration' or 'What are WebSockets?'"></textarea>
+                        <textarea id="aiConceptInput-phase4" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Explain Django REST Framework integration' or 'What are WebSockets?'"></textarea>
                         <div class="flex justify-between items-center">
                             <button onclick="generateExplanation('phase4')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">Generate Explanation</button>
                             <span id="aiLoading-phase4" class="text-slate-500 hidden">Generating...</span>
                             <button onclick="toggleAIExplanationSection('phase4')" class="text-slate-500 hover:text-slate-700 font-medium">Close</button>
                         </div>
-                        <div id="aiExplanationOutput-phase4" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600"></div>
+                        <div id="aiExplanationOutput-phase4" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600"></div>
                     </div>
                 </div>
             </section>
@@ -451,15 +458,15 @@
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-200">
                     <button onclick="toggleAIExplanationSection('phase5')" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">✨ Get AI Explanation</button>
-                    <div id="aiExplanationSection-phase5" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner">
+                    <div id="aiExplanationSection-phase5" class="ai-explanation-section mt-6 p-4 bg-slate-100 rounded-lg shadow-inner dark:bg-slate-700">
                         <h4 class="text-lg font-semibold text-sky-700 mb-3">AI Concept Explainer for Phase 5</h4>
-                        <textarea id="aiConceptInput-phase5" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Suggest a CRM agent project' or 'Explain lead qualification assistant'"></textarea>
+                        <textarea id="aiConceptInput-phase5" class="w-full p-2 border border-slate-300 rounded-md focus:ring-sky-500 focus:border-sky-500 mb-3 text-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600" rows="3" placeholder="e.g., 'Suggest a CRM agent project' or 'Explain lead qualification assistant'"></textarea>
                         <div class="flex justify-between items-center">
                             <button onclick="generateExplanation('phase5')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">Generate Explanation</button>
                             <span id="aiLoading-phase5" class="text-slate-500 hidden">Generating...</span>
                             <button onclick="toggleAIExplanationSection('phase5')" class="text-slate-500 hover:text-slate-700 font-medium">Close</button>
                         </div>
-                        <div id="aiExplanationOutput-phase5" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-700 dark:text-slate-200 dark:border-slate-600"></div>
+                        <div id="aiExplanationOutput-phase5" class="mt-4 p-3 bg-white rounded-md border border-slate-200 text-slate-800 leading-relaxed min-h-[50px] dark:bg-slate-800 dark:text-slate-200 dark:border-slate-600"></div>
                     </div>
                 </div>
             </section>
@@ -588,6 +595,7 @@
         // Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
+        const bodyElement = document.body; // Reference to body for theme classes
 
         function updateThemeIcon() {
             if (htmlElement.getAttribute('data-theme') === 'dark') {
@@ -606,18 +614,33 @@
                 localStorage.setItem('theme', 'light');
             }
             updateThemeIcon();
-            // Re-render chart to apply new theme colors if Chart.js supports it directly via CSS variables
-            // For now, Chart.js colors are hardcoded rgba, so this won't change chart appearance
             if (timelineChartInstance) {
                 timelineChartInstance.destroy();
                 initTimelineChart();
             }
         });
 
-        // Initialize theme from localStorage
         const savedTheme = localStorage.getItem('theme') || 'light';
         htmlElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon();
+
+        // Sidebar Toggle Logic
+        const sidebar = document.getElementById('sidebar');
+        const openSidebarBtn = document.getElementById('openSidebar');
+        const closeSidebarBtn = document.getElementById('closeSidebar');
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+            }
+        }
+
+        openSidebarBtn.addEventListener('click', toggleSidebar);
+        closeSidebarBtn.addEventListener('click', toggleSidebar);
 
         // Tab Navigation Logic
         function showTab(tabId) {
@@ -637,7 +660,7 @@
                 selectedSection.classList.add('active');
             }
 
-            const selectedButton = document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`);
+            const selectedButton = document.querySelector(`.tab-button[onclick*="showTab('${tabId}')"]`); // Use *= for partial match
             if (selectedButton) {
                 selectedButton.classList.add('active', 'border-sky-600');
                 selectedButton.classList.remove('border-transparent');
@@ -685,13 +708,13 @@
                                 display: true,
                                 text: 'Average Estimated Weeks',
                                 font: { size: 14, weight: 'bold' },
-                                color: htmlElement.getAttribute('data-theme') === 'dark' ? '#cbd5e1' : '#475569' // slate-300 or slate-700
+                                color: htmlElement.getAttribute('data-theme') === 'dark' ? '#cbd5e1' : '#475569'
                             },
-                            ticks: { color: htmlElement.getAttribute('data-theme') === 'dark' ? '#94a3b8' : '#64748b' } // slate-400 or slate-500
+                            ticks: { color: htmlElement.getAttribute('data-theme') === 'dark' ? '#94a3b8' : '#64748b' }
                         },
                         y: {
                             ticks: { 
-                                color: htmlElement.getAttribute('data-theme') === 'dark' ? '#cbd5e1' : '#475569', // slate-300 or slate-700
+                                color: htmlElement.getAttribute('data-theme') === 'dark' ? '#cbd5e1' : '#475569',
                                 font: { size: 12 },
                                 callback: function(value, index, values) {
                                     const label = this.getLabelForValue(value);
@@ -721,7 +744,7 @@
                                     return label;
                                 }
                             },
-                            backgroundColor: htmlElement.getAttribute('data-theme') === 'dark' ? '#1e293b' : '#0f172a', // slate-800 or slate-900
+                            backgroundColor: htmlElement.getAttribute('data-theme') === 'dark' ? '#1e293b' : '#0f172a',
                             titleFont: { size: 14 },
                             bodyFont: { size: 12 },
                             padding: 10,
@@ -864,7 +887,6 @@
             listItem.className = 'p-2 border-b border-slate-200 last:border-b-0 dark:border-slate-600';
             listItem.innerHTML = `<strong>${loggedTask}</strong>: ${loggedDuration} on ${timestamp}`;
             
-            // Remove initial "No sessions logged yet." if present
             if (effortLog.querySelector('li.text-slate-500')) {
                 effortLog.innerHTML = '';
             }
@@ -878,7 +900,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             showTab(currentActiveTab);
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-            updateThemeIcon(); // Ensure icon is correct on load
+            updateThemeIcon();
         });
     </script>
 </body>
